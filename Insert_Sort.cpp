@@ -19,12 +19,12 @@ void MySwap(int *ap_a, int *ap_b){
 //삽입 정렬
 int main(void){
     int array[10] = {5,10,1,8,7,6,3,2,9,4};
-    int min, i, j, temp, index = 0;
+    int i,j;
     
-    for(i = 0; i<9 ; i++){
+    for(i = 0; i<10 ; i++){
         j = i;
-        while(array[j]>array[j+1]){
-            MySwap(array + j , array + j +1);
+        while(array[j]<array[j-1] && j>0){
+            MySwap(array + j , array + j -1);
             j--;
         }
     }
@@ -35,3 +35,4 @@ int main(void){
     
     return 0;
 }
+
