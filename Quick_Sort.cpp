@@ -32,8 +32,8 @@ void Quick_Sort(int *ap_data, int a_start, int a_end){
     int start_pointer = a_start+1, end_pointer = a_end;
     //엇갈릴 때 까지
     while(start_pointer <= end_pointer) {
-        while(*(ap_data + start_pointer) < pivot) start_pointer++;
-        while(*(ap_data + end_pointer) >pivot) end_pointer--;
+        while(*(ap_data + start_pointer) < pivot && start_pointer <= a_end) start_pointer++;
+        while(*(ap_data + end_pointer) >pivot && end_pointer > a_start) end_pointer--;
         
         if(start_pointer < end_pointer) MySwap(ap_data + start_pointer, ap_data + end_pointer);
         
