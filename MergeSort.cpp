@@ -43,12 +43,12 @@ void Merge(int *ap_data, int start, int middle, int end){
     if(i > middle) {
         for(int t = j; t <= end ; t++){
             sorted[k] = ap_data[t];
-            k++;
+            k++; //주의!
         }
     }else {
         for(int t = i ; t <= middle ; t++){
             sorted[k] = ap_data[t];
-            k++;
+            k++; //주의!
         }
     }
     //정렬된 배열을 삽입
