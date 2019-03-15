@@ -80,16 +80,20 @@ bool compare(pair<int, char> a, pair<int, char> b){
 void ShowPath(Vertex *ap_v, char a_start, char a_dst){
     vector<pair<int, char>> path;
     int weight = 0;
-    path.push_back(make_pair(weight, a_dst)); //먼저 종착점 추가
-    weight++; //추가 했으므로 증가시킴
+    //먼저 종착점 추가
+    path.push_back(make_pair(weight, a_dst));
+    //추가 했으므로 증가시킴
+    weight++;
     char key = ap_v[a_dst - 65].m_previous;
-    while(key > a_start){
+    //시작점 나올때 까지 반복해서 경로를 찾음
+    while(key != a_start){
         path.push_back(make_pair(weight, key));
         weight++;
         key = ap_v[key - 65].m_previous;
     }
+    //시작점을 만나서 반복문을 빠져나왔으므로 시작점도 추가
     path.push_back(make_pair(weight , key));
-    
+    //vector에 들어간 순서를 내림차순으로 정렬
     sort(path.begin(), path.end() , compare);
     for(int i = 0; i < weight  ; i++){
         cout << path[i].second << " -> ";
@@ -259,19 +263,19 @@ int main(void){
     
     
     /*for(int i = 0; i<17 ; i++){
-        cout << v[i].m_name << " ";
-    }
-    cout <<endl;
-    
-    for(int i = 0; i< 17 ; i++){
-        cout << v[i].m_name << "의 인접 노드는 " ;
-        for(int j = 0; j< v[i].m_edge.size() ; j++){
-            cout << v[i].m_edge[j].m_name <<" ";
-            cout << wm[i][v[i].m_edge[j].m_name - 65] << " ";
-        }
-        cout << endl;
-            
-    }*/
+     cout << v[i].m_name << " ";
+     }
+     cout <<endl;
+     
+     for(int i = 0; i< 17 ; i++){
+     cout << v[i].m_name << "의 인접 노드는 " ;
+     for(int j = 0; j< v[i].m_edge.size() ; j++){
+     cout << v[i].m_edge[j].m_name <<" ";
+     cout << wm[i][v[i].m_edge[j].m_name - 65] << " ";
+     }
+     cout << endl;
+     
+     }*/
     
     AStar(v, wm, 'A', 'Q');
     cout << "최단거리는 : " << v[Q].m_distance << endl;
@@ -280,223 +284,5 @@ int main(void){
     
     
     
-    return 0;
-}Last login: Fri Mar 15 00:20:07 on ttys000
- seon-minkim@Seon-Minui-MacBookPro  ~  ls
-AndroidStudioProjects    Downloads                Pictures
-Applications             Library                  Public
-Applications (Parallels) Movies                   Samsung
-Desktop                  Music                    eclipse
-Documents                Parallels                zsh-syntax-highlighting
- seon-minkim@Seon-Minui-MacBookPro  ~  cd Desktop
- seon-minkim@Seon-Minui-MacBookPro  ~/Desktop  ls
-$RECYCLE.BIN
-3:6일_로봇네비.m4a
-Algorithm
-Sm_programming
-Thumbs.db
-Tutorial
-Ubuntu 18.04
-
-Entering Ex mode.  Type "visual" to go to Normal mode.
-:visual
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-"Astar.cpp" 0L, 0C
-        cout << v[i].m_name << " ";
-ctest
-desktop.ini
-study
-test.cpp
-내 Boot Camp
-오디오 녹음 2019-03-06 위치 오후 1.32.05.m4a
-스크린샷 2019-02-08 오후 1.26.36.png
-스크린샷 2019-02-08 오전 10.07.15.png
-스크린샷 2019-02-11 오전 9.46.49.png
-스크린샷 2019-02-18 오전 9.54.03.png
- seon-minkim@Seon-Minui-MacBookPro  ~/Desktop  cd Algorithm
- seon-minkim@Seon-Minui-MacBookPro  ~/Desktop/Algorithm  Al
-zsh: command not found: Al
- ✘ seon-minkim@Seon-Minui-MacBookPro  ~/Desktop/Algorithm  cd Algorithm-study
- seon-minkim@Seon-Minui-MacBookPro  ~/Desktop/Algorithm/Algorithm-study   master  touch Astar.cpp
- seon-minkim@Seon-Minui-MacBookPro  ~/Desktop/Algorithm/Algorithm-study   master  ls
-Astar.cpp          DFS.cpp            Quick_Sort.cpp     UnionFind.cpp
-BFS.cpp            Heap_Sort.cpp      Selection_Sort.cpp
-Bubble_Sort.cpp    Insert_Sort.cpp    Sort()1.cpp
-Counting_Sort.cpp  MergeSort.cpp      Sort()2.cpp
- seon-minkim@Seon-Minui-MacBookPro  ~/Desktop/Algorithm/Algorithm-study   master  ex Astar.cpp
- seon-minkim@Seon-Minui-MacBookPro  ~/Desktop/Algorithm/Algorithm-study   master  git add .
- seon-minkim@Seon-Minui-MacBookPro  ~/Desktop/Algorithm/Algorithm-study   master ✚  git status
-On branch master
-Your branch is up to date with 'origin/master'.
-
-Changes to be committed:
-  (use "git reset HEAD <file>..." to unstage)
-
-	new file:   Astar.cpp
-
- seon-minkim@Seon-Minui-MacBookPro  ~/Desktop/Algorithm/Algorithm-study   master ✚  git commit -m "ADD Astar.cpp [NEW]"
-[master 1533808] ADD Astar.cpp [NEW]
- 1 file changed, 285 insertions(+)
- create mode 100644 Astar.cpp
- seon-minkim@Seon-Minui-MacBookPro  ~/Desktop/Algorithm/Algorithm-study   master  git push
-Enumerating objects: 4, done.
-Counting objects: 100% (4/4), done.
-Delta compression using up to 4 threads
-Compressing objects: 100% (3/3), done.
-Writing objects: 100% (3/3), 2.58 KiB | 2.58 MiB/s, done.
-Total 3 (delta 1), reused 0 (delta 0)
-remote: Resolving deltas: 100% (1/1), completed with 1 local object.
-To https://github.com/Cookie-Pizza/Algorithm-study.git
-   d586970..1533808  master -> master
- seon-minkim@Seon-Minui-MacBookPro  ~/Desktop/Algorithm/Algorithm-study   master  git log
- seon-minkim@Seon-Minui-MacBookPro  ~/Desktop/Algorithm/Algorithm-study   master 
- seon-minkim@Seon-Minui-MacBookPro  ~/Desktop/Algorithm/Algorithm-study   master  cd
- seon-minkim@Seon-Minui-MacBookPro  ~  ls
-AndroidStudioProjects    Downloads                Pictures
-Applications             Library                  Public
-Applications (Parallels) Movies                   Samsung
-Desktop                  Music                    eclipse
-Documents                Parallels                zsh-syntax-highlighting
- seon-minkim@Seon-Minui-MacBookPro  ~  pwd
-/Users/seon-minkim
- seon-minkim@Seon-Minui-MacBookPro  ~  cd Desktop
- seon-minkim@Seon-Minui-MacBookPro  ~/Desktop  rmdir Sm_programming
-rmdir: Sm_programming: Directory not empty
- ✘ seon-minkim@Seon-Minui-MacBookPro  ~/Desktop  cd Sm_programming
- seon-minkim@Seon-Minui-MacBookPro  ~/Desktop/Sm_programming  ls
-test.cpp
- seon-minkim@Seon-Minui-MacBookPro  ~/Desktop/Sm_programming  rm test.cpp
- seon-minkim@Seon-Minui-MacBookPro  ~/Desktop/Sm_programming  cd ..
- seon-minkim@Seon-Minui-MacBookPro  ~/Desktop  rmdir Sm_programming
- seon-minkim@Seon-Minui-MacBookPro  ~/Desktop  ls
-$RECYCLE.BIN
-3:6일_로봇네비.m4a
-Algorithm
-Thumbs.db
-Tutorial
-Ubuntu 18.04
-ctest
-desktop.ini
-study
-test.cpp
-내 Boot Camp
-오디오 녹음 2019-03-06 위치 오후 1.32.05.m4a
-스크린샷 2019-02-08 오후 1.26.36.png
-스크린샷 2019-02-08 오전 10.07.15.png
-스크린샷 2019-02-11 오전 9.46.49.png
-스크린샷 2019-02-18 오전 9.54.03.png
- seon-minkim@Seon-Minui-MacBookPro  ~/Desktop  rm test.cpp
- seon-minkim@Seon-Minui-MacBookPro  ~/Desktop  ls
-$RECYCLE.BIN
-3:6일_로봇네비.m4a
-Algorithm
-Thumbs.db
-Tutorial
-Ubuntu 18.04
-ctest
-desktop.ini
-study
-내 Boot Camp
-오디오 녹음 2019-03-06 위치 오후 1.32.05.m4a
-스크린샷 2019-02-08 오후 1.26.36.png
-스크린샷 2019-02-08 오전 10.07.15.png
-스크린샷 2019-02-11 오전 9.46.49.png
-스크린샷 2019-02-18 오전 9.54.03.png
- seon-minkim@Seon-Minui-MacBookPro  ~/Desktop  clear
-
-Entering Ex mode.  Type "visual" to go to Normal mode.
-:visual'
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-"Astar.
-
-Entering Ex mode.  Type "visual" to go to Normal mode.
-:visual
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-"Astar.cpp" 285L, 8766C
-    }
-    cout <<endl;
-
-    for(int i = 0; i< 17 ; i++){
-        cout << v[i].m_name << "의 인접 노드는 " ;
-        for(int j = 0; j< v[i].m_edge.size() ; j++){
-            cout << v[i].m_edge[j].m_name <<" ";
-            cout << wm[i][v[i].m_edge[j].m_name - 65] << " ";
-        }
-        cout << endl;
-
-    }*/
-
-    AStar(v, wm, 'A', 'Q');
-    cout << "최단거리는 : " << v[Q].m_distance << endl;
-
-
-
-
-
     return 0;
 }
-
-~
--- INSERT --
-
-
